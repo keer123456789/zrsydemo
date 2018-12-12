@@ -5,6 +5,11 @@ public class PigInfo {
     private String birth;
     private String gender;
     private String weight;
+    private String location;
+
+
+    public PigInfo() {
+    }
 
     public String getId() {
         return id;
@@ -36,5 +41,13 @@ public class PigInfo {
 
     public void setWeight(String weight) {
         this.weight = weight;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }

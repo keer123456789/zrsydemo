@@ -1,11 +1,15 @@
 package com.sjcl.zrsy_demo.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class EnvInfo {
-   String temperature;
-   String hum;
-   String Co2;
-   String time;
-   String location;
+   private String temperature;
+   private String hum;
+   @JsonProperty(value="CO2")
+   private String CO2;
+   private String time;
+   private String location;
+
 
     public String getTemperature() {
         return temperature;
@@ -24,11 +28,11 @@ public class EnvInfo {
     }
 
     public String getCo2() {
-        return Co2;
+        return CO2;
     }
 
     public void setCo2(String co2) {
-        Co2 = co2;
+        CO2 = co2;
     }
 
     public String getTime() {
@@ -46,4 +50,6 @@ public class EnvInfo {
     public void setLocation(String location) {
         this.location = location;
     }
+
+
 }

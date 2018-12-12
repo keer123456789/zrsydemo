@@ -1,5 +1,6 @@
 package com.sjcl.zrsy_demo.controller;
 import com.sjcl.zrsy_demo.domain.EnvInfo;
+import com.sjcl.zrsy_demo.domain.PigHouse;
 import com.sjcl.zrsy_demo.service.implement.PighouseEvnServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,13 +23,15 @@ public class PighouseEnvController {
         return pighouseEvnService.addEvnInfo(envInfo);
     }
 
+    /**
+     *
+     * @param location
+     * @return
+     */
     @PostMapping("/addPighouse")
-    public boolean addPighouse(@RequestBody EnvInfo envInfo){
-        return pighouseEvnService.addEvnInfo(envInfo);
+    public boolean addPighouse(@RequestBody String location){
+        return pighouseEvnService.addPigHouse(location);
     }
 
-    public static void main(String[] args) {
 
-
-    }
 }

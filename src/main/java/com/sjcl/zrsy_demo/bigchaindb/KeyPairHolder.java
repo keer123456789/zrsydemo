@@ -9,6 +9,10 @@ import java.io.FileOutputStream;
 import java.security.KeyPair;
 
 public class KeyPairHolder {
+    /**
+     * 通过./keypair.txt获得密钥对
+     * @return
+     */
     public static KeyPair getKeyPair(){
         try {
             FileInputStream in = new FileInputStream("./keypair.txt");
@@ -20,6 +24,11 @@ public class KeyPairHolder {
             return null;
         }
     }
+
+    /**
+     * 将密钥对存贮在./keypair.txt文件中
+     * @param keyPair
+     */
     public static void setKeyPair(KeyPair keyPair){
         try{
         FileOutputStream fos = new FileOutputStream("./keypair.txt");
@@ -31,10 +40,18 @@ public class KeyPairHolder {
 
     }
 
+    /**
+     * 获得发送交易使用的公钥
+     * @return
+     */
     public static EdDSAPublicKey getPublic(){
         return (EdDSAPublicKey)getKeyPair().getPublic();
     }
 
+    /**
+     * 获得发送交易使用的私钥
+     * @return
+     */
     public static EdDSAPrivateKey getPrivate(){
         return (EdDSAPrivateKey) getKeyPair().getPrivate();
     }

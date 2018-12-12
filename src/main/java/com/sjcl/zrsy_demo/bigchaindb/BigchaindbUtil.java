@@ -3,12 +3,10 @@ package com.sjcl.zrsy_demo.bigchaindb;
 
 import com.bigchaindb.api.AssetsApi;
 import com.bigchaindb.api.TransactionsApi;
+import com.bigchaindb.builders.BigchainDbConfigBuilder;
 import com.bigchaindb.builders.BigchainDbTransactionBuilder;
 import com.bigchaindb.constants.Operations;
-import com.bigchaindb.model.Asset;
-import com.bigchaindb.model.FulFill;
-import com.bigchaindb.model.Transaction;
-import com.bigchaindb.model.Transactions;
+import com.bigchaindb.model.*;
 import com.bigchaindb.util.JsonUtils;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.internal.LinkedTreeMap;
@@ -468,17 +466,48 @@ public class BigchaindbUtil {
      * @param pigId
      * @return
      */
-    public static String getAssetId(String pigId) {
-        try {
-            if(AssetsApi.getAssets(pigId).getAssets().size()!=0) {
-                return AssetsApi.getAssets(pigId).getAssets().get(0).getId();
-            }else{
-                return null;
+    public static String getAssetId(String pigId,String type) {
+        String id = null;
+        try{
+            List<Asset> assets = AssetsApi.getAssets(pigId).getAssets();
+
+            LinkedTreeMap linkedTreeMap;
+            for(Asset asset : assets){
+                linkedTreeMap= (LinkedTreeMap) asset.getData();
+                if(linkedTreeMap.get("type").equals(type)){
+                    id=asset.getId();
+
+                }
             }
-        } catch (IOException e) {
+        }catch(Exception e){
             return null;
         }
-
+        return id;
 
     }
+
+//    public static void main(String[] args) throws IOException {
+//
+//
+//        BigchainDbConfigBuilder
+//                .baseUrl("http://127.0.0.1:9984")
+//                .setup();
+//        List<Asset> assets = AssetsApi.getAssets("010101").getAssets();
+//
+//        String id = null;
+//        LinkedTreeMap linkedTreeMap;
+//        for(Asset asset : assets){
+//            linkedTreeMap= (LinkedTreeMap) asset.getData();
+//            if(linkedTreeMap.get("type").equals("java.lang.String")){
+//                id=asset.getId();
+//            }
+//        }
+//        System.out.println(id);
+//
+//        System.out.println(String.class);
+//        System.out.println(String.class.toString());
+//
+//
+//
+//    }
 }
