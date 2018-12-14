@@ -7,6 +7,8 @@ import com.sjcl.zrsy_demo.domain.PigInfo;
 import com.sjcl.zrsy_demo.domain.PigSelfInfo;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class PigInfoDao implements IPigInfoDao {
     /**
@@ -32,10 +34,22 @@ public class PigInfoDao implements IPigInfoDao {
     @Override
     public boolean addSelfInfo(PigSelfInfo pigSelfInfo) {
         try {
-            BigchaindbUtil.transferToSelf(new BigchaindbData(pigSelfInfo),BigchaindbUtil.getAssetId(pigSelfInfo.getId(),PigSelfInfo.class.toString()));
+            BigchaindbUtil.transferToSelf(new BigchaindbData(pigSelfInfo),BigchaindbUtil.getAssetId(pigSelfInfo.getId(),PigInfo.class.getCanonicalName()));
         } catch (Exception e) {
             return false;
         }
         return true;
     }
+
+    @Override
+    public List<PigSelfInfo> getPigInfo(String pigId) {
+        try {
+            return BigchaindbUtil.getMetaDatas(BigchaindbUtil.getAssetId(pigId, PigInfo.class.getCanonicalName()), PigSelfInfo.class);
+        }catch (Exception e){
+            return null;
+        }
+    }
+
+
+
 }

@@ -7,6 +7,8 @@ import com.sjcl.zrsy_demo.service.IPigInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PigInfoServiceImpl implements IPigInfoService {
     @Autowired
@@ -20,6 +22,11 @@ public class PigInfoServiceImpl implements IPigInfoService {
     @Override
     public boolean addPig(PigInfo pigInfo) {
         return pigInfoDao.addPig(pigInfo);
+    }
+
+    @Override
+    public List<PigSelfInfo> getPigInfo(String pigid) {
+        return pigInfoDao.getPigInfo(pigid);
     }
 
     /**

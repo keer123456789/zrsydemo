@@ -2,6 +2,7 @@ package com.sjcl.zrsy_demo.bigchaindb;
 
 
 import com.bigchaindb.api.AssetsApi;
+import com.bigchaindb.api.MetaDataApi;
 import com.bigchaindb.api.TransactionsApi;
 import com.bigchaindb.builders.BigchainDbConfigBuilder;
 import com.bigchaindb.builders.BigchainDbTransactionBuilder;
@@ -12,6 +13,8 @@ import com.google.gson.JsonSyntaxException;
 import com.google.gson.internal.LinkedTreeMap;
 
 import com.sjcl.zrsy_demo.domain.BigchaindbData;
+import com.sjcl.zrsy_demo.domain.EnvInfo;
+import com.sjcl.zrsy_demo.domain.PigHouse;
 import net.i2p.crypto.eddsa.EdDSAPublicKey;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.ClassUtils;
@@ -462,7 +465,7 @@ public class BigchaindbUtil {
     }
 
     /**
-     * use pig id get asset id
+     * 通过猪的id，类型查询交易id
      * @param pigId
      * @return
      */
@@ -486,28 +489,17 @@ public class BigchaindbUtil {
 
     }
 
-//    public static void main(String[] args) throws IOException {
-//
-//
-//        BigchainDbConfigBuilder
-//                .baseUrl("http://127.0.0.1:9984")
-//                .setup();
+    public static void main(String[] args) throws IOException, ClassNotFoundException, InstantiationException, IllegalAccessException, InvocationTargetException, IntrospectionException {
+
+
+        BigchainDbConfigBuilder
+                .baseUrl("http://127.0.0.1:9984")
+                .setup();
 //        List<Asset> assets = AssetsApi.getAssets("010101").getAssets();
-//
-//        String id = null;
-//        LinkedTreeMap linkedTreeMap;
-//        for(Asset asset : assets){
-//            linkedTreeMap= (LinkedTreeMap) asset.getData();
-//            if(linkedTreeMap.get("type").equals("java.lang.String")){
-//                id=asset.getId();
-//            }
-//        }
-//        System.out.println(id);
-//
-//        System.out.println(String.class);
-//        System.out.println(String.class.toString());
-//
-//
-//
-//    }
+        String assetid = getAssetId("010101",String.class.getCanonicalName());
+        List<EnvInfo> envInfos=getMetaDatas(assetid,EnvInfo.class);
+
+
+
+    }
 }

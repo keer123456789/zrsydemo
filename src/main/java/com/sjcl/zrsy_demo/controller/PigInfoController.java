@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class PigInfoController {
     @Autowired
@@ -32,5 +34,10 @@ public class PigInfoController {
     @PostMapping("/addselfinfo")
     public boolean addSelfInfo(@RequestBody PigSelfInfo pigSelfInfo){
         return pigInfoService.addSelfInfo(pigSelfInfo);
+    }
+
+    @PostMapping("/getpiginfo")
+    public List<PigSelfInfo> getPigInfo(@RequestBody String PigId){
+        return pigInfoService.getPigInfo(PigId);
     }
 }

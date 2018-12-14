@@ -3,7 +3,8 @@ package com.sjcl.zrsy_demo.domain;
 public class PigSelfInfo {
     private String id ;
     private String temperature;
-    private String weight;
+//    private String weight;
+    private String time;
 
     public PigSelfInfo() {
     }
@@ -24,11 +25,19 @@ public class PigSelfInfo {
         this.temperature = temperature;
     }
 
-    public String getWeight() {
-        return weight;
+//    public String getWeight() {
+//        return weight;
+//    }
+//
+//    public void setWeight(String weight) {
+//        this.weight = weight;
+//    }
+
+    public String getTime() {
+        return time;
     }
 
-    public void setWeight(String weight) {
-        this.weight = weight;
+    public void setTime(String time) {
+        this.time = time;
     }
 }

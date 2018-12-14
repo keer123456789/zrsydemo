@@ -8,6 +8,7 @@ public class PigInfo {
     private String location;
 
 
+
     public PigInfo() {
     }
 
@@ -50,4 +51,6 @@ public class PigInfo {
     public void setLocation(String location) {
         this.location = location;
     }
+
+
 }
