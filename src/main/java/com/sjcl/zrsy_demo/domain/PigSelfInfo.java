@@ -4,7 +4,7 @@ public class PigSelfInfo {
     private String id ;
     private String temperature;
 //    private String weight;
-    private String time;
+    private String datetime;
 
     public PigSelfInfo() {
     }
@@ -33,11 +33,12 @@ public class PigSelfInfo {
 //        this.weight = weight;
 //    }
 
-    public String getTime() {
-        return time;
+
+    public String getDatetime() {
+        return datetime;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setDatetime(String datetime) {
+        this.datetime = datetime;
     }
 }

@@ -1,55 +1,65 @@
 package com.sjcl.zrsy_demo.domain;
 
+/**
+ * 后备公猪
+ */
 public class PigInfo {
-    private String id;
-    private String birth;
-    private String gender;
-    private String weight;
-    private String location;
-
-
+    private String earId;
+    private String breed;
+    private String column;
+    private String ringNumber;
+    private String matingWeek;
+    private String remarks;
 
     public PigInfo() {
     }
 
-    public String getId() {
-        return id;
+    public String getEarId() {
+        return earId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setEarId(String earId) {
+        this.earId = earId;
     }
 
-    public String getBirth() {
-        return birth;
+    public String getBreed() {
+        return breed;
     }
 
-    public void setBirth(String birth) {
-        this.birth = birth;
+    public void setBreed(String breed) {
+        this.breed = breed;
     }
 
-    public String getGender() {
-        return gender;
+    public String getColumn() {
+        return column;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setColumn(String column) {
+        this.column = column;
     }
 
-    public String getWeight() {
-        return weight;
+    public String getRingNumber() {
+        return ringNumber;
     }
 
-    public void setWeight(String weight) {
-        this.weight = weight;
+    public void setRingNumber(String ringNumber) {
+        this.ringNumber = ringNumber;
     }
 
-    public String getLocation() {
-        return location;
+    public String getMatingWeek() {
+        return matingWeek;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setMatingWeek(String matingWeek) {
+        this.matingWeek = matingWeek;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
     }
 
 

@@ -4,11 +4,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class EnvInfo {
    private String temperature;
-   private String hum;
+   private String humidity;
    @JsonProperty(value="CO2")
    private String CO2;
-   private String time;
-   private String location;
+   private String datetime;
+   private String id;
 
 
     public String getTemperature() {
@@ -19,37 +19,35 @@ public class EnvInfo {
         this.temperature = temperature;
     }
 
-    public String getHum() {
-        return hum;
+    public String getHumidity() {
+        return humidity;
     }
 
-    public void setHum(String hum) {
-        this.hum = hum;
+    public void setHumidity(String humidity) {
+        this.humidity = humidity;
     }
 
-    public String getCo2() {
+    public String getCO2() {
         return CO2;
     }
 
-    public void setCo2(String co2) {
-        CO2 = co2;
+    public void setCO2(String CO2) {
+        this.CO2 = CO2;
     }
 
-    public String getTime() {
-        return time;
+    public String getDatetime() {
+        return datetime;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setDatetime(String datetime) {
+        this.datetime = datetime;
     }
 
-    public String getLocation() {
-        return location;
+    public String getId() {
+        return id;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setId(String id) {
+        this.id = id;
     }
-
-
 }

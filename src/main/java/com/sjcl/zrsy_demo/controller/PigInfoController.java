@@ -36,8 +36,13 @@ public class PigInfoController {
         return pigInfoService.addSelfInfo(pigSelfInfo);
     }
 
+    /**
+     * 获得猪的健康信息
+     * @param pigSelfInfo
+     * @return
+     */
     @PostMapping("/getpiginfo")
-    public List<PigSelfInfo> getPigInfo(@RequestBody String PigId){
-        return pigInfoService.getPigInfo(PigId);
+    public List<PigSelfInfo> getPigInfo(@RequestBody PigSelfInfo pigSelfInfo){
+        return pigInfoService.getPigInfo(pigSelfInfo.getId());
     }
 }
