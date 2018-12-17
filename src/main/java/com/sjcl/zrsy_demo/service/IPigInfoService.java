@@ -9,4 +9,5 @@ public interface IPigInfoService {
     boolean addPig(PigInfo pigInfo);
     boolean addSelfInfo(PigSelfInfo pigSelfInfo);
     List<PigSelfInfo> getPigInfo(String pigid);
+    List<PigInfo>getAllPigInfo();
 }

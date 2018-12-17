@@ -42,6 +42,19 @@ public class PigInfoDao implements IPigInfoDao {
     }
 
     /**
+     * 获得全部猪的信息
+     * @return
+     */
+    @Override
+    public List<PigInfo> getAllPigInfo() {
+        try{
+            return BigchaindbUtil.getAllAssets(PigInfo.class.getCanonicalName(),PigInfo.class);
+        }catch (Exception e){
+            return null;
+        }
+    }
+
+    /**
      *
      * @param pigId
      * @return

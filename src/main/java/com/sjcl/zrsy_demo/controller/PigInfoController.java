@@ -53,4 +53,9 @@ public class PigInfoController {
     public String initSensor(){
         return  null;
     }
+
+    @GetMapping("/getAllPig")
+    public List<PigInfo> getAllPig(){
+        return pigInfoService.getAllPigInfo();
+    }
 }

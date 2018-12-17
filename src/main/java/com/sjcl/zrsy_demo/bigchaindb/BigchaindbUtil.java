@@ -15,6 +15,7 @@ import com.google.gson.internal.LinkedTreeMap;
 import com.sjcl.zrsy_demo.domain.BigchaindbData;
 import com.sjcl.zrsy_demo.domain.EnvInfo;
 import com.sjcl.zrsy_demo.domain.PigHouse;
+import com.sjcl.zrsy_demo.domain.PigInfo;
 import net.i2p.crypto.eddsa.EdDSAPublicKey;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.ClassUtils;
@@ -451,6 +452,23 @@ public class BigchaindbUtil {
         return metadatas;
     }
 
+    public static <T> List<T> getAllAssets(String key, Class<PigInfo> type) throws IOException, ClassNotFoundException {
+       List<T> listAssets =new ArrayList<>();
+
+       Assets assets =AssetsApi.getAssets(key);
+       for(Asset asset:assets.getAssets()){
+           LinkedTreeMap assetMap=(LinkedTreeMap)asset.getData();
+           if (assetMap != null) {
+               Object bean = BigchaindbUtil.bigchaindbDataToBean(assetMap);
+               if (bean != null && type.isInstance(bean)) {
+                   listAssets.add((T) bean);
+               }
+           }
+       }
+       return listAssets;
+
+    }
+
     private static FulFill transferToSelfFulFill(String assetId) throws IOException {
         final FulFill spendFrom = new FulFill();
         String transactionId = getLastTransactionId(assetId);
@@ -495,10 +513,8 @@ public class BigchaindbUtil {
         BigchainDbConfigBuilder
                 .baseUrl("http://127.0.0.1:9984")
                 .setup();
-//        List<Asset> assets = AssetsApi.getAssets("010101").getAssets();
-        String assetid = getAssetId("010101",String.class.getCanonicalName());
-        List<EnvInfo> envInfos=getMetaDatas(assetid,EnvInfo.class);
-
+        List<PigInfo> allAssets=getAllAssets(PigInfo.class.getCanonicalName(),PigInfo.class);
+        System.out.println(allAssets.size());
 
 
     }

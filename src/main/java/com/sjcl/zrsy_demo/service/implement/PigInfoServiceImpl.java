@@ -14,6 +14,11 @@ public class PigInfoServiceImpl implements IPigInfoService {
     @Autowired
     IPigInfoDao pigInfoDao;
 
+    @Override
+    public List<PigInfo> getAllPigInfo() {
+        return pigInfoDao.getAllPigInfo();
+    }
+
     /**
      * 增加新猪
      * @param pigInfo
