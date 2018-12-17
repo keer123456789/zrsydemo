@@ -41,6 +41,11 @@ public class PigInfoDao implements IPigInfoDao {
         return true;
     }
 
+    /**
+     *
+     * @param pigId
+     * @return
+     */
     @Override
     public List<PigSelfInfo> getPigInfo(String pigId) {
         try {

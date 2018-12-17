@@ -7,10 +7,17 @@ import com.sjcl.zrsy_demo.service.IPighouseEvnService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PighouseEvnServiceImpl implements IPighouseEvnService {
     @Autowired
     PighouseEvnDao pighouseEvnDao;
+
+    @Override
+    public List<EnvInfo> getPigHouseEnv(String id) {
+        return pighouseEvnDao.getPigHouseEnv(id);
+    }
 
     /**
      * 实时采集猪舍环境信息
@@ -23,7 +30,7 @@ public class PighouseEvnServiceImpl implements IPighouseEvnService {
     }
 
     @Override
-    public boolean addPigHouse(String location) {
-        return pighouseEvnDao.addPigHouse(location);
+    public boolean addPigHouse(PigHouse pigHouse) {
+        return pighouseEvnDao.addPigHouse(pigHouse);
     }
 }

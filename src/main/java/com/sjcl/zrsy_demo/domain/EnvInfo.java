@@ -1,11 +1,11 @@
 package com.sjcl.zrsy_demo.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+import javax.validation.constraints.Past;
 public class EnvInfo {
    private String temperature;
    private String humidity;
-   @JsonProperty(value="CO2")
+
    private String CO2;
    private String datetime;
    private String id;
@@ -26,7 +26,7 @@ public class EnvInfo {
     public void setHumidity(String humidity) {
         this.humidity = humidity;
     }
-
+    @JsonProperty("CO2")
     public String getCO2() {
         return CO2;
     }

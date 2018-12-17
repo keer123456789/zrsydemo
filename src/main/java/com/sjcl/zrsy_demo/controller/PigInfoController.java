@@ -5,9 +5,11 @@ import com.sjcl.zrsy_demo.domain.PigInfo;
 import com.sjcl.zrsy_demo.domain.PigSelfInfo;
 import com.sjcl.zrsy_demo.service.IPigInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
 
 import java.util.List;
 
@@ -23,6 +25,7 @@ public class PigInfoController {
      */
     @PostMapping("/addpig")
     public boolean addPig(@RequestBody PigInfo pigInfo){
+
         return pigInfoService.addPig(pigInfo);
     }
 
@@ -44,5 +47,10 @@ public class PigInfoController {
     @PostMapping("/getpiginfo")
     public List<PigSelfInfo> getPigInfo(@RequestBody PigSelfInfo pigSelfInfo){
         return pigInfoService.getPigInfo(pigSelfInfo.getId());
+    }
+
+    @GetMapping("/initSensor")
+    public String initSensor(){
+        return  null;
     }
 }
