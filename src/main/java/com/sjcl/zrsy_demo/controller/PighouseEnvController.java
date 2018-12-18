@@ -1,12 +1,11 @@
 package com.sjcl.zrsy_demo.controller;
 import com.sjcl.zrsy_demo.domain.EnvInfo;
 import com.sjcl.zrsy_demo.domain.PigHouse;
+import com.sjcl.zrsy_demo.domain.PigInfo;
 import com.sjcl.zrsy_demo.service.implement.PighouseEvnServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.couchbase.CouchbaseProperties;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,7 +16,7 @@ public class PighouseEnvController {
     PighouseEvnServiceImpl pighouseEvnService;
 
     /**
-     * 猪舍的环境信息
+     * 增加猪舍的环境信息
      * @param envInfo
      * @return
      */
@@ -36,8 +35,15 @@ public class PighouseEnvController {
         return pighouseEvnService.addPigHouse(pigHouse);
     }
 
-    @PostMapping("/getPigHouseEnv")
-    public List<EnvInfo> getPigHouseEnv(@RequestBody EnvInfo envInfo){
-        return pighouseEvnService.getPigHouseEnv(envInfo.getId());
+    @RequestMapping(value = "/getPigHouseEnv/{pigHouseId}",method = RequestMethod.GET)
+    public List<EnvInfo> getPigHouseEnv(@PathVariable String pigHouseId){
+        return pighouseEvnService.getPigHouseEnv(pigHouseId);
     }
+
+    @RequestMapping(value = "/getPigList/{pigHouseId}",method = RequestMethod.GET)
+    public List<PigInfo>getPigList(@PathVariable String pigHouseId){
+        return pighouseEvnService.getPigList(pigHouseId);
+    }
+
+
 }

@@ -3,6 +3,7 @@ package com.sjcl.zrsy_demo.service.implement;
 import com.sjcl.zrsy_demo.dao.implement.bigchaindb.PighouseEvnDao;
 import com.sjcl.zrsy_demo.domain.EnvInfo;
 import com.sjcl.zrsy_demo.domain.PigHouse;
+import com.sjcl.zrsy_demo.domain.PigInfo;
 import com.sjcl.zrsy_demo.service.IPighouseEvnService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,11 @@ import java.util.List;
 public class PighouseEvnServiceImpl implements IPighouseEvnService {
     @Autowired
     PighouseEvnDao pighouseEvnDao;
+
+    @Override
+    public List<PigInfo> getPigList(String id) {
+        return pighouseEvnDao.getPigList(id);
+    }
 
     @Override
     public List<EnvInfo> getPigHouseEnv(String id) {

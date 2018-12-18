@@ -1,5 +1,6 @@
 package com.sjcl.zrsy_demo.dao.implement.bigchaindb;
 
+import com.bigchaindb.api.AssetsApi;
 import com.sjcl.zrsy_demo.bigchaindb.BigchaindbUtil;
 import com.sjcl.zrsy_demo.dao.IPigInfoDao;
 import com.sjcl.zrsy_demo.domain.BigchaindbData;
@@ -60,7 +61,7 @@ public class PigInfoDao implements IPigInfoDao {
      * @return
      */
     @Override
-    public List<PigSelfInfo> getPigInfo(String pigId) {
+    public List<PigSelfInfo> getPigHealthInfo(String pigId) {
         try {
             return BigchaindbUtil.getMetaDatas(BigchaindbUtil.getAssetId(pigId, PigInfo.class.getCanonicalName()), PigSelfInfo.class);
         }catch (Exception e){
@@ -68,6 +69,14 @@ public class PigInfoDao implements IPigInfoDao {
         }
     }
 
+    @Override
+    public PigInfo getPigInfo(String pigId) {
+        try {
+            return (PigInfo) BigchaindbUtil.getAllAssets(pigId,PigInfo.class).get(0);
+        }catch (Exception e){
+            return null;
+        }
+    }
 
 
 }

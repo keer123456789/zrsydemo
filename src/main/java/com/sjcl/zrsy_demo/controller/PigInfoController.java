@@ -1,17 +1,22 @@
 package com.sjcl.zrsy_demo.controller;
 
 
+
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+
 import com.sjcl.zrsy_demo.domain.PigInfo;
 import com.sjcl.zrsy_demo.domain.PigSelfInfo;
+
 import com.sjcl.zrsy_demo.service.IPigInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class PigInfoController {
@@ -20,17 +25,27 @@ public class PigInfoController {
 
     /**
      * 增加新猪
-     * @param pigInfo
+     * @param json
      * @return
      */
     @PostMapping("/addpig")
-    public boolean addPig(@RequestBody PigInfo pigInfo){
+    public Map addPig(@RequestBody String json){
+        JSONObject jsonObject= JSON.parseObject(json);
+        JSONObject data=jsonObject.getJSONObject("data");
+        PigInfo pigInfo=JSON.toJavaObject(data,PigInfo.class);
+        if(pigInfoService.addPig(pigInfo)) {
+            Map<String, String> res = new HashMap<>();
+            res.put("message", "success");
+            return res;
+        }
+        else{
+            return null;
+        }
 
-        return pigInfoService.addPig(pigInfo);
     }
 
     /**
-     * 增加猪的特征信息
+     * 增加猪的健康信息
      * @param pigSelfInfo
      * @return
      */
@@ -41,12 +56,12 @@ public class PigInfoController {
 
     /**
      * 获得猪的健康信息
-     * @param pigSelfInfo
+     * @param pigId
      * @return
      */
-    @PostMapping("/getpiginfo")
-    public List<PigSelfInfo> getPigInfo(@RequestBody PigSelfInfo pigSelfInfo){
-        return pigInfoService.getPigInfo(pigSelfInfo.getId());
+    @RequestMapping(value = "/getPigHealthInfo/{pigId}",method = RequestMethod.GET)
+    public List<PigSelfInfo> getPigHealthInfo(@PathVariable String pigId){
+        return pigInfoService.getPigHealthInfo(pigId);
     }
 
     @GetMapping("/initSensor")
@@ -58,4 +73,10 @@ public class PigInfoController {
     public List<PigInfo> getAllPig(){
         return pigInfoService.getAllPigInfo();
     }
+
+    @RequestMapping(value = "/getPigInfo/{pigId}",method = RequestMethod.GET)
+    public PigInfo getPigInfo(@PathVariable String pigId){
+        return pigInfoService.getPigInfo(pigId);
+    }
+
 }

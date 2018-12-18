@@ -30,8 +30,8 @@ public class PigInfoServiceImpl implements IPigInfoService {
     }
 
     @Override
-    public List<PigSelfInfo> getPigInfo(String pigid) {
-        return pigInfoDao.getPigInfo(pigid);
+    public List<PigSelfInfo> getPigHealthInfo(String pigid) {
+        return pigInfoDao.getPigHealthInfo(pigid);
     }
 
     /**
@@ -42,5 +42,10 @@ public class PigInfoServiceImpl implements IPigInfoService {
     @Override
     public boolean addSelfInfo(PigSelfInfo pigSelfInfo) {
         return pigInfoDao.addSelfInfo(pigSelfInfo);
+    }
+
+    @Override
+    public PigInfo getPigInfo(String pigid) {
+        return pigInfoDao.getPigInfo(pigid);
     }
 }

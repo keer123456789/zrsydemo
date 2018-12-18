@@ -10,8 +10,17 @@ public class PigInfo {
     private String ringNumber;
     private String matingWeek;
     private String remarks;
+    private String pigstyId;
 
     public PigInfo() {
+    }
+
+    public String getPigstyId() {
+        return pigstyId;
+    }
+
+    public void setPigstyId(String pigstyId) {
+        this.pigstyId = pigstyId;
     }
 
     public String getEarId() {

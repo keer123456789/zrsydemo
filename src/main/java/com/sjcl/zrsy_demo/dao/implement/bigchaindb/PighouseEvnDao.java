@@ -2,10 +2,7 @@ package com.sjcl.zrsy_demo.dao.implement.bigchaindb;
 
 import com.sjcl.zrsy_demo.bigchaindb.BigchaindbUtil;
 import com.sjcl.zrsy_demo.dao.IPighouseEvnDao;
-import com.sjcl.zrsy_demo.domain.BigchaindbData;
-import com.sjcl.zrsy_demo.domain.EnvInfo;
-import com.sjcl.zrsy_demo.domain.PigHouse;
-import com.sjcl.zrsy_demo.domain.PigSelfInfo;
+import com.sjcl.zrsy_demo.domain.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -34,6 +31,20 @@ public class PighouseEvnDao implements IPighouseEvnDao {
             return false;
         }
         return true;
+    }
+
+    /**
+     * 根据猪舍id获得全部猪的信息
+     * @param id
+     * @return
+     */
+    @Override
+    public List<PigInfo> getPigList(String id) {
+        try{
+            return BigchaindbUtil.getAllAssets(id,PigInfo.class);
+        }catch (Exception e){
+            return null;
+        }
     }
 
     /**

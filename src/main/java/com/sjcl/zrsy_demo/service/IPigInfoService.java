@@ -8,6 +8,7 @@ import java.util.List;
 public interface IPigInfoService {
     boolean addPig(PigInfo pigInfo);
     boolean addSelfInfo(PigSelfInfo pigSelfInfo);
-    List<PigSelfInfo> getPigInfo(String pigid);
+    List<PigSelfInfo> getPigHealthInfo(String pigid);
     List<PigInfo>getAllPigInfo();
+    PigInfo getPigInfo(String pigid);
 }

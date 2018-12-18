@@ -513,8 +513,8 @@ public class BigchaindbUtil {
         BigchainDbConfigBuilder
                 .baseUrl("http://127.0.0.1:9984")
                 .setup();
-        List<PigInfo> allAssets=getAllAssets(PigInfo.class.getCanonicalName(),PigInfo.class);
-        System.out.println(allAssets.size());
+        PigInfo pigInfo= (PigInfo) BigchaindbUtil.getAllAssets("1234567890123",PigInfo.class).get(1);
+        System.out.println(1);
 
 
     }
