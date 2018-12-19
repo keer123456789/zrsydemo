@@ -8,7 +8,7 @@ public class EnvInfo {
 
    private String CO2;
    private String datetime;
-   private String id;
+   private String pigstyid;
 
 
     public String getTemperature() {
@@ -43,11 +43,11 @@ public class EnvInfo {
         this.datetime = datetime;
     }
 
-    public String getId() {
-        return id;
+    public String getPigstyid() {
+        return pigstyid;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setPigstyid(String pigstyid) {
+        this.pigstyid = pigstyid;
     }
 }
