@@ -1,13 +1,16 @@
 package com.sjcl.zrsy_demo.service.implement;
 
 import com.sjcl.zrsy_demo.dao.IPigInfoDao;
+import com.sjcl.zrsy_demo.domain.InfoPig;
 import com.sjcl.zrsy_demo.domain.PigInfo;
 import com.sjcl.zrsy_demo.domain.PigSelfInfo;
 import com.sjcl.zrsy_demo.service.IPigInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class PigInfoServiceImpl implements IPigInfoService {
@@ -30,13 +33,14 @@ public class PigInfoServiceImpl implements IPigInfoService {
     }
 
     @Override
-    public List<PigSelfInfo> getPigHealthInfo(String pigid) {
-        return pigInfoDao.getPigHealthInfo(pigid);
+    public List<InfoPig> getPigHealthInfo(String pigid, int hour) {
+        return pigInfoDao.getPigHealthInfo(pigid,hour);
     }
 
     /**
      * 实时采集猪的特征信息
      * @param pigSelfInfo
+     *
      * @return
      */
     @Override

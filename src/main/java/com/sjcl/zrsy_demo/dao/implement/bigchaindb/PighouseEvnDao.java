@@ -5,18 +5,34 @@ import com.sjcl.zrsy_demo.dao.IPighouseEvnDao;
 import com.sjcl.zrsy_demo.domain.*;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
 public class PighouseEvnDao implements IPighouseEvnDao {
     @Override
-    public List<EnvInfo> getPigHouseEnv(String id) {
+    public List<InfoEnv> getPigHouseEnv(String id,int time) {
         try {
-            return BigchaindbUtil.getMetaDatas(BigchaindbUtil.getAssetId(id, PigHouse.class.getCanonicalName()), EnvInfo.class);
+            List<EnvInfo> envInfos= BigchaindbUtil.getMetaDatas(BigchaindbUtil.getAssetId(id, PigHouse.class.getCanonicalName()), EnvInfo.class);
+
+            List<InfoEnv> list =new ArrayList<>();
+            for(EnvInfo envInfo:envInfos){
+                if(PigInfoDao.getCurrentTime(time,envInfo.getDatetime())){
+                    InfoEnv infoEnv=new InfoEnv();
+                    infoEnv.setTemperature(envInfo.getTemperature());
+                    infoEnv.setDatetime(envInfo.getDatetime());
+                    infoEnv.setCO2(envInfo.getCO2());
+                    infoEnv.setHumidity(envInfo.getHumidity());
+                    list.add(infoEnv);
+                }
+            }
+            return list;
         }catch (Exception e){
+            e.printStackTrace();
             return null;
         }
     }
+
 
     /**
      * 实时采集猪舍的环境信息

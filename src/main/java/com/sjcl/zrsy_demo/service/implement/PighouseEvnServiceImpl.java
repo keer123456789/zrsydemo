@@ -2,6 +2,7 @@ package com.sjcl.zrsy_demo.service.implement;
 
 import com.sjcl.zrsy_demo.dao.implement.bigchaindb.PighouseEvnDao;
 import com.sjcl.zrsy_demo.domain.EnvInfo;
+import com.sjcl.zrsy_demo.domain.InfoEnv;
 import com.sjcl.zrsy_demo.domain.PigHouse;
 import com.sjcl.zrsy_demo.domain.PigInfo;
 import com.sjcl.zrsy_demo.service.IPighouseEvnService;
@@ -21,8 +22,8 @@ public class PighouseEvnServiceImpl implements IPighouseEvnService {
     }
 
     @Override
-    public List<EnvInfo> getPigHouseEnv(String id) {
-        return pighouseEvnDao.getPigHouseEnv(id);
+    public List<InfoEnv> getPigHouseEnv(String id, int time) {
+        return pighouseEvnDao.getPigHouseEnv(id,time);
     }
 
     /**

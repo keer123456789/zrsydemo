@@ -6,6 +6,7 @@ package com.sjcl.zrsy_demo.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 
+import com.sjcl.zrsy_demo.domain.InfoPig;
 import com.sjcl.zrsy_demo.domain.PigInfo;
 import com.sjcl.zrsy_demo.domain.PigSelfInfo;
 
@@ -55,13 +56,33 @@ public class PigInfoController {
     }
 
     /**
-     * 获得猪的健康信息
+     * 获得猪最近24小时健康信息
      * @param pigId
      * @return
      */
-    @RequestMapping(value = "/getPigHealthInfo/{pigId}",method = RequestMethod.GET)
-    public List<PigSelfInfo> getPigHealthInfo(@PathVariable String pigId){
-        return pigInfoService.getPigHealthInfo(pigId);
+    @RequestMapping(value = "/getPigHealthInfo24/{pigId}",method = RequestMethod.GET)
+    public List<InfoPig> getPigHealthInfoBefore24(@PathVariable String pigId){
+        return pigInfoService.getPigHealthInfo(pigId,24);
+    }
+
+    /**
+     * 获得猪最近12小时健康信息
+     * @param pigId
+     * @return
+     */
+    @RequestMapping(value = "/getPigHealthInfo12/{pigId}",method = RequestMethod.GET)
+    public List<InfoPig> getPigHealthInfoBefore12(@PathVariable String pigId){
+        return pigInfoService.getPigHealthInfo(pigId,12);
+    }
+
+    /**
+     * 获得猪最近1分钟健康信息
+     * @param pigId
+     * @return
+     */
+    @RequestMapping(value = "/getPigHealthInfo1/{pigId}",method = RequestMethod.GET)
+    public List<InfoPig> getPigHealthInfoBefore1(@PathVariable String pigId){
+        return pigInfoService.getPigHealthInfo(pigId,1);
     }
 
     @GetMapping("/initSensor")

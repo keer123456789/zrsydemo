@@ -1,5 +1,6 @@
 package com.sjcl.zrsy_demo.controller;
 import com.sjcl.zrsy_demo.domain.EnvInfo;
+import com.sjcl.zrsy_demo.domain.InfoEnv;
 import com.sjcl.zrsy_demo.domain.PigHouse;
 import com.sjcl.zrsy_demo.domain.PigInfo;
 import com.sjcl.zrsy_demo.service.implement.PighouseEvnServiceImpl;
@@ -35,9 +36,9 @@ public class PighouseEnvController {
         return pighouseEvnService.addPigHouse(pigHouse);
     }
 
-    @RequestMapping(value = "/getPigHouseEnv/{pigHouseId}",method = RequestMethod.GET)
-    public List<EnvInfo> getPigHouseEnv(@PathVariable String pigHouseId){
-        return pighouseEvnService.getPigHouseEnv(pigHouseId);
+    @RequestMapping(value = "/getPigHouseEnv24/{pigHouseId}",method = RequestMethod.GET)
+    public List<InfoEnv> getPigHouseEnv24(@PathVariable String pigHouseId){
+        return pighouseEvnService.getPigHouseEnv(pigHouseId,24);
     }
 
     @RequestMapping(value = "/getPigList/{pigHouseId}",method = RequestMethod.GET)
@@ -45,5 +46,13 @@ public class PighouseEnvController {
         return pighouseEvnService.getPigList(pigHouseId);
     }
 
+    @RequestMapping(value = "/getPigHouseEnv12/{pigHouseId}",method = RequestMethod.GET)
+    public List<InfoEnv> getPigHouseEnv12(@PathVariable String pigHouseId){
+        return pighouseEvnService.getPigHouseEnv(pigHouseId,12);
+    }
+    @RequestMapping(value = "/getPigHouseEnv1/{pigHouseId}",method = RequestMethod.GET)
+    public List<InfoEnv> getPigHouseEnv1(@PathVariable String pigHouseId){
+        return pighouseEvnService.getPigHouseEnv(pigHouseId,1);
+    }
 
 }

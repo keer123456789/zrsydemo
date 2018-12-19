@@ -27,9 +27,10 @@ import java.beans.PropertyDescriptor;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.security.PublicKey;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * used for interactive with bigchaindb.
@@ -507,15 +508,34 @@ public class BigchaindbUtil {
 
     }
 
-    public static void main(String[] args) throws IOException, ClassNotFoundException, InstantiationException, IllegalAccessException, InvocationTargetException, IntrospectionException {
-
-
-        BigchainDbConfigBuilder
-                .baseUrl("http://127.0.0.1:9984")
-                .setup();
-        PigInfo pigInfo= (PigInfo) BigchaindbUtil.getAllAssets("1234567890123",PigInfo.class).get(1);
-        System.out.println(1);
-
-
+    public static String getCurrentTime(){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Calendar beforeTime = Calendar.getInstance();
+        beforeTime.add(Calendar.DATE, -1);// 3分钟之前的时间
+        Date beforeD = beforeTime.getTime();
+        String time = sdf.format(beforeD);
+        return time;
     }
+
+
+    public static void main(String[] args) throws IOException, ClassNotFoundException, InstantiationException, IllegalAccessException, InvocationTargetException, IntrospectionException, ParseException {
+
+
+//        BigchainDbConfigBuilder
+//                .baseUrl("http://127.0.0.1:9984")
+//                .setup();
+//        PigInfo pigInfo= (PigInfo) BigchaindbUtil.getAllAssets("1234567890123",PigInfo.class).get(1);
+//        System.out.println(1);
+        // TODO Auto-generated method stub
+     SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
+     Date a=sdf.parse("2018/12/12 12:12:12");
+     Date b=sdf.parse("2017/12/12 12:12:12");
+     if(a.before(b))
+         System.out.println(true);
+     else
+         System.out.println(false);
+
+     System.out.println(getCurrentTime());
+    }
+
 }
