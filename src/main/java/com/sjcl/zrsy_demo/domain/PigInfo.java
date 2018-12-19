@@ -11,6 +11,7 @@ public class PigInfo {
     private String matingWeek;
     private String remarks;
     private String pigstyId;
+    private String ERC721ID;
 
     public PigInfo() {
     }
@@ -71,5 +72,11 @@ public class PigInfo {
         this.remarks = remarks;
     }
 
+    public String getERC721ID() {
+        return ERC721ID;
+    }
 
+    public void setERC721ID(String ERC721ID) {
+        this.ERC721ID = ERC721ID;
+    }
 }
