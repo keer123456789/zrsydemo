@@ -52,7 +52,7 @@ public class PighouseEvnServiceImpl implements IPighouseEvnService {
         List<PigHouse> pigHouses=getPigHouselist();
         List<String> idlist=new ArrayList<>();
         for(PigHouse pigHouse:pigHouses){
-            idlist.add(pigHouse.getId());
+            idlist.add(pigHouse.getPigstyId());
         }
         return idlist;
     }
