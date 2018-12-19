@@ -1,20 +1,18 @@
 package com.sjcl.zrsy_demo.domain;
 
 public class PigHouse {
-    private String id;
+    private String pigstyId;
     private String column;
     private String ringNumber;
     private String person;
 
 
-
-
-    public String getId() {
-        return id;
+    public String getPigstyId() {
+        return pigstyId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setPigstyId(String pigstyId) {
+        this.pigstyId = pigstyId;
     }
 
     public String getColumn() {
