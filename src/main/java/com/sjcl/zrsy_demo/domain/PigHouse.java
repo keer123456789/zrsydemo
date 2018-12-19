@@ -3,7 +3,8 @@ package com.sjcl.zrsy_demo.domain;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class PigHouse {
-    @JsonProperty("pigstyId")
+
+
     private String pigstyId;
     private String column;
     private String ringNumber;
