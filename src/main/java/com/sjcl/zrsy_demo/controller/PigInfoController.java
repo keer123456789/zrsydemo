@@ -52,7 +52,11 @@ public class PigInfoController {
      */
     @PostMapping("/addselfinfo")
     public boolean addSelfInfo(@RequestBody PigSelfInfo pigSelfInfo){
-        return pigInfoService.addSelfInfo(pigSelfInfo);
+        if(pigSelfInfo.getTemperature()!=null) {
+            return pigInfoService.addSelfInfo(pigSelfInfo);
+        }
+        else
+            return false;
     }
 
     /**
@@ -60,7 +64,7 @@ public class PigInfoController {
      * @param pigId
      * @return
      */
-    @RequestMapping(value = "/getPigHealthInfo24/{pigId}",method = RequestMethod.GET)
+//    @RequestMapping(value = "/getPigHealthInfo24/{pigId}",method = RequestMethod.GET)
     public List<InfoPig> getPigHealthInfoBefore24(@PathVariable String pigId){
         return pigInfoService.getPigHealthInfo(pigId,24);
     }
@@ -70,7 +74,7 @@ public class PigInfoController {
      * @param pigId
      * @return
      */
-    @RequestMapping(value = "/getPigHealthInfo12/{pigId}",method = RequestMethod.GET)
+//    @RequestMapping(value = "/getPigHealthInfo12/{pigId}",method = RequestMethod.GET)
     public List<InfoPig> getPigHealthInfoBefore12(@PathVariable String pigId){
         return pigInfoService.getPigHealthInfo(pigId,12);
     }
@@ -80,9 +84,9 @@ public class PigInfoController {
      * @param pigId
      * @return
      */
-    @RequestMapping(value = "/getPigHealthInfo1/{pigId}",method = RequestMethod.GET)
+    @RequestMapping(value = "/getPigHealthInfo/{pigId}",method = RequestMethod.GET)
     public List<InfoPig> getPigHealthInfoBefore1(@PathVariable String pigId){
-        return pigInfoService.getPigHealthInfo(pigId,1);
+        return pigInfoService.getPigHealthInfo(pigId,5);
     }
 
     @GetMapping("/initSensor")

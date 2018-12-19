@@ -23,7 +23,11 @@ public class PighouseEnvController {
      */
     @PostMapping("/envInfo")
     public boolean envInfo(@RequestBody EnvInfo envInfo){
-        return pighouseEvnService.addEvnInfo(envInfo);
+        if(envInfo.getCO2()!=null&&envInfo.getDatetime()!=null&&envInfo.getTemperature()!=null){
+            return pighouseEvnService.addEvnInfo(envInfo);
+        }
+        else
+            return false;
     }
 
     /**
@@ -36,7 +40,7 @@ public class PighouseEnvController {
         return pighouseEvnService.addPigHouse(pigHouse);
     }
 
-    @RequestMapping(value = "/getPigHouseEnv24/{pigHouseId}",method = RequestMethod.GET)
+//    @RequestMapping(value = "/getPigHouseEnv24/{pigHouseId}",method = RequestMethod.GET)
     public List<InfoEnv> getPigHouseEnv24(@PathVariable String pigHouseId){
         return pighouseEvnService.getPigHouseEnv(pigHouseId,24);
     }
@@ -46,13 +50,13 @@ public class PighouseEnvController {
         return pighouseEvnService.getPigList(pigHouseId);
     }
 
-    @RequestMapping(value = "/getPigHouseEnv12/{pigHouseId}",method = RequestMethod.GET)
+//    @RequestMapping(value = "/getPigHouseEnv12/{pigHouseId}",method = RequestMethod.GET)
     public List<InfoEnv> getPigHouseEnv12(@PathVariable String pigHouseId){
         return pighouseEvnService.getPigHouseEnv(pigHouseId,12);
     }
-    @RequestMapping(value = "/getPigHouseEnv1/{pigHouseId}",method = RequestMethod.GET)
-    public List<InfoEnv> getPigHouseEnv1(@PathVariable String pigHouseId){
-        return pighouseEvnService.getPigHouseEnv(pigHouseId,1);
+    @RequestMapping(value = "/getPigHouseEnv/{pigHouseId}",method = RequestMethod.GET)
+    public List<InfoEnv> getPigHouseEnv(@PathVariable String pigHouseId){
+        return pighouseEvnService.getPigHouseEnv(pigHouseId,5);
     }
 
 }
