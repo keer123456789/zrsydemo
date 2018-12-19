@@ -14,4 +14,6 @@ public interface IPighouseEvnService {
     boolean addPigHouse(PigHouse pigHouse);
     List<InfoEnv> getPigHouseEnv(String id,int time);
     List<PigInfo> getPigList(String id);
+    List<PigHouse>getPigHouselist();
+    List<String>getPigHouseIdList();
 }

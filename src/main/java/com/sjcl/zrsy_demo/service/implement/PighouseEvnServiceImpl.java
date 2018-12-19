@@ -9,6 +9,7 @@ import com.sjcl.zrsy_demo.service.IPighouseEvnService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -19,6 +20,11 @@ public class PighouseEvnServiceImpl implements IPighouseEvnService {
     @Override
     public List<PigInfo> getPigList(String id) {
         return pighouseEvnDao.getPigList(id);
+    }
+
+    @Override
+    public List<PigHouse> getPigHouselist() {
+        return pighouseEvnDao.getPigHouselist();
     }
 
     @Override
@@ -39,5 +45,15 @@ public class PighouseEvnServiceImpl implements IPighouseEvnService {
     @Override
     public boolean addPigHouse(PigHouse pigHouse) {
         return pighouseEvnDao.addPigHouse(pigHouse);
+    }
+
+    @Override
+    public List<String> getPigHouseIdList() {
+        List<PigHouse> pigHouses=getPigHouselist();
+        List<String> idlist=new ArrayList<>();
+        for(PigHouse pigHouse:pigHouses){
+            idlist.add(pigHouse.getId());
+        }
+        return idlist;
     }
 }

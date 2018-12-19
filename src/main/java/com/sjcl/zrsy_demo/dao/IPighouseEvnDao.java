@@ -12,4 +12,5 @@ public interface IPighouseEvnDao {
     boolean addPigHouse(PigHouse pigHouse);
     List<InfoEnv> getPigHouseEnv(String id,int time);
     List<PigInfo> getPigList(String id);
+    List<PigHouse>getPigHouselist();
 }

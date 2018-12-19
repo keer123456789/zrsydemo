@@ -454,7 +454,7 @@ public class BigchaindbUtil {
         return metadatas;
     }
 
-    public static <T> List<T> getAllAssets(String key, Class<PigInfo> type) throws IOException, ClassNotFoundException {
+    public static <T> List<T> getAllAssets(String key, Class<T> type) throws IOException, ClassNotFoundException {
        List<T> listAssets =new ArrayList<>();
 
        Assets assets =AssetsApi.getAssets(key);

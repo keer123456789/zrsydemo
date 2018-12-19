@@ -77,4 +77,17 @@ public class PighouseEvnDao implements IPighouseEvnDao {
             return false;
         }
     }
+
+    /**
+     * 获得猪舍列表信息
+     * @return
+     */
+    @Override
+    public List<PigHouse> getPigHouselist() {
+        try{
+        return BigchaindbUtil.getAllAssets(PigHouse.class.getCanonicalName(),PigHouse.class);
+        }catch (Exception e){
+            return null;
+        }
+    }
 }

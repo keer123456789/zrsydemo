@@ -1,4 +1,6 @@
 package com.sjcl.zrsy_demo.controller;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.sjcl.zrsy_demo.domain.EnvInfo;
 import com.sjcl.zrsy_demo.domain.InfoEnv;
 import com.sjcl.zrsy_demo.domain.PigHouse;
@@ -8,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.couchbase.CouchbaseProperties;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -32,12 +36,22 @@ public class PighouseEnvController {
 
     /**
      *
-     * @param pigHouse
+     * @param json
      * @return
      */
     @PostMapping("/addPighouse")
-    public boolean addPighouse(@RequestBody PigHouse pigHouse){
-        return pighouseEvnService.addPigHouse(pigHouse);
+    public Map addPighouse(@RequestBody String  json){
+        JSONObject jsonObject= JSON.parseObject(json);
+        JSONObject data=jsonObject.getJSONObject("data");
+        PigHouse pigInfo=JSON.toJavaObject(data,PigHouse.class);
+        if(pighouseEvnService.addPigHouse(pigInfo)) {
+            Map<String, String> res = new HashMap<>();
+            res.put("message", "success");
+            return res;
+        }
+        else{
+            return null;
+        }
     }
 
 //    @RequestMapping(value = "/getPigHouseEnv24/{pigHouseId}",method = RequestMethod.GET)
@@ -57,6 +71,19 @@ public class PighouseEnvController {
     @RequestMapping(value = "/getPigHouseEnv/{pigHouseId}",method = RequestMethod.GET)
     public List<InfoEnv> getPigHouseEnv(@PathVariable String pigHouseId){
         return pighouseEvnService.getPigHouseEnv(pigHouseId,5);
+    }
+
+    /**
+     * 获得猪舍列表信息
+     * @return
+     */
+    @GetMapping("/pigHouseList")
+    public List<PigHouse> getPigHouselist(){
+        return pighouseEvnService.getPigHouselist();
+    }
+    @GetMapping("/pigHouseIdList")
+    public List<String> getPigHouseIdlist(){
+        return pighouseEvnService.getPigHouseIdList();
     }
 
 }
