@@ -97,21 +97,21 @@ public class PigInfoDao implements IPigInfoDao {
      * @return
      */
     public static boolean getCurrentTime(int hour,String date) throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:MM:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Calendar beforeTime = Calendar.getInstance();
         if(hour==24) {
-            beforeTime.add(Calendar.DATE, -1);// 24小时之前的时间
+            beforeTime.set(Calendar.HOUR, beforeTime.get(Calendar.HOUR) - 24);    ;// 24小时之前的时间
         }
         else if(hour==12){
-            beforeTime.add(Calendar.HOUR, -12);// 12小时之前的时间
-        }
+            beforeTime.set(Calendar.HOUR, beforeTime.get(Calendar.HOUR) - 12);        }
         else{
             beforeTime.add(Calendar.MINUTE, -1);// 1分钟之前的时间
         }
         Date beforeD = beforeTime.getTime();
         System.out.println(beforeD);
         Date date1=sdf.parse(date);
-        if(beforeD.after(date1)){
+        System.out.println(date1);
+        if(beforeD.before(date1)){
             return true;
         }
         else{
