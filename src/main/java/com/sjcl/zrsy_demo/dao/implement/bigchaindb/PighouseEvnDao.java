@@ -42,7 +42,7 @@ public class PighouseEvnDao implements IPighouseEvnDao {
     @Override
     public boolean addPighouseEnvInfo(EnvInfo envInfo) {
         try{
-            BigchaindbUtil.transferToSelf(new BigchaindbData(envInfo),BigchaindbUtil.getAssetId(envInfo.getPigstyid(),PigHouse.class.getCanonicalName()));
+            BigchaindbUtil.transferToSelf(new BigchaindbData(envInfo),BigchaindbUtil.getAssetId(envInfo.getPigstyId(),PigHouse.class.getCanonicalName()));
         }catch (Exception e){
             return false;
         }
