@@ -1,16 +1,10 @@
 package com.sjcl.zrsy_demo.domain;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-public class Sensor {
+public class PigHouseSensor {
     private String id;
-    @JsonProperty("ERC721ID")
-    private String ERC721ID;
+    private String pigstyId;
     private String type;
     private String time;
-
-    public Sensor() {
-    }
 
     public String getId() {
         return id;
@@ -19,13 +13,13 @@ public class Sensor {
     public void setId(String id) {
         this.id = id;
     }
-    @JsonProperty("ERC721ID")
-    public String getERC721ID() {
-        return ERC721ID;
+
+    public String getPigstyId() {
+        return pigstyId;
     }
 
-    public void setERC721ID(String ERC721ID) {
-        this.ERC721ID = ERC721ID;
+    public void setPigstyId(String pigstyId) {
+        this.pigstyId = pigstyId;
     }
 
     public String getType() {

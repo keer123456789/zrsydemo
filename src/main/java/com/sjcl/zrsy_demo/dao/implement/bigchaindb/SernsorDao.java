@@ -2,20 +2,40 @@ package com.sjcl.zrsy_demo.dao.implement.bigchaindb;
 
 import com.sjcl.zrsy_demo.bigchaindb.BigchaindbUtil;
 import com.sjcl.zrsy_demo.dao.ISensorDao;
-import com.sjcl.zrsy_demo.domain.Sensor;
+import com.sjcl.zrsy_demo.domain.PigHouseSensor;
+import com.sjcl.zrsy_demo.domain.PigSensor;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class SernsorDao implements ISensorDao {
+    @Override
+    public PigHouseSensor getPigHouseSensor(String PigHouseID) {
+        try{
+            return BigchaindbUtil.getAllAssets(PigHouseID, PigHouseSensor.class).get(0);
+        }catch (Exception e){
+            return null;
+        }
+    }
+
+    @Override
+    public boolean addPigHouseSensor(PigHouseSensor pigHouseSensor) {
+        try {
+            String assetId= BigchaindbUtil.createAsset(pigHouseSensor);
+            return assetId != null;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
     /**
-     * 增加传感器
-     * @param sensor
+     * 增加猪传感器
+     * @param pigSensor
      * @return
      */
     @Override
-    public boolean addSensor(Sensor sensor) {
+    public boolean addSensor(PigSensor pigSensor) {
         try {
-            String assetId= BigchaindbUtil.createAsset(sensor);
+            String assetId= BigchaindbUtil.createAsset(pigSensor);
             return assetId != null;
         } catch (Exception e) {
             return false;
@@ -28,9 +48,9 @@ public class SernsorDao implements ISensorDao {
      * @return
      */
     @Override
-    public Sensor getSensorInfo(String ERC721ID) {
+    public PigSensor getSensorInfo(String ERC721ID) {
         try{
-            return BigchaindbUtil.getAllAssets(ERC721ID,Sensor.class).get(0);
+            return BigchaindbUtil.getAllAssets(ERC721ID, PigSensor.class).get(0);
         }catch (Exception e){
             return null;
         }

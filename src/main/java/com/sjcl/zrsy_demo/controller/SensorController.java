@@ -2,7 +2,9 @@ package com.sjcl.zrsy_demo.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.sjcl.zrsy_demo.domain.Sensor;
+import com.sjcl.zrsy_demo.domain.PigHouse;
+import com.sjcl.zrsy_demo.domain.PigHouseSensor;
+import com.sjcl.zrsy_demo.domain.PigSensor;
 import com.sjcl.zrsy_demo.service.ISensorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -37,19 +39,34 @@ public class SensorController {
      * @return
      */
     @GetMapping("/getPigSensorByERC721/{ERC721ID}")
-    public Sensor getSensorInfo(@PathVariable String ERC721ID){
+    public PigSensor getSensorInfo(@PathVariable String ERC721ID){
         return sensorService.getSensor(ERC721ID);
     }
 
     /**
-     * 增加传感器的信息
-     * @param sensor
+     * 增加猪传感器的信息
+     * @param pigSensor
      * @return
      */
     @PostMapping("/addPigSensor")
-    public boolean addPigSensor(@RequestBody Sensor sensor){
-        return sensorService.addSensor(sensor);
+    public boolean addPigSensor(@RequestBody PigSensor pigSensor){
+        return sensorService.addSensor(pigSensor);
     }
+
+    /**
+     * 增加猪舍的传感器信息
+     * @param pigHouseSensor
+     * @return
+     */
+    @PostMapping("/addPigHouseSensor")
+    public boolean addPigHouseSensor(@RequestBody PigHouseSensor pigHouseSensor){
+        return sensorService.addPigHouseSensor(pigHouseSensor);
+    }
+    @GetMapping("/getPigHouseSensorBypighouseID/{PigHouseID}")
+    public PigHouseSensor getPigHouseSensorInfo(@PathVariable String PigHouseID){
+        return sensorService.getPigHouseSensor(PigHouseID);
+    }
+
 
     /**
      *
