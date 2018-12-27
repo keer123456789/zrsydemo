@@ -16,4 +16,5 @@ public interface IPighouseEvnService {
     List<PigInfo> getPigList(String id);
     List<PigHouse>getPigHouselist();
     List<String>getPigHouseIdList();
+    PigHouse getPigHouseInfoByERC721(String ERC721ID);
 }

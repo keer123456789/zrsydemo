@@ -13,4 +13,5 @@ public interface IPighouseEvnDao {
     List<InfoEnv> getPigHouseEnv(String id,int time);
     List<PigInfo> getPigList(String id);
     List<PigHouse>getPigHouselist();
+    PigHouse getPigHouseInfoByERC721(String ERC721ID);
 }

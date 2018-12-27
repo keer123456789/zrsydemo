@@ -36,6 +36,11 @@ public class PighouseEnvController {
             return false;
     }
 
+    @GetMapping("/getPigHouseInfoByERC721/{ERC721ID}")
+    public PigHouse getPigHouseInfoByERC(@PathVariable String ERC721ID){
+        return pighouseEvnService.getPigHouseInfoByERC721(ERC721ID);
+    }
+
     /**
      *增加猪舍
      * @param json

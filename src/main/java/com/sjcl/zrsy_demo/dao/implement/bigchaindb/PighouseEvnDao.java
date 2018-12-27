@@ -78,6 +78,16 @@ public class PighouseEvnDao implements IPighouseEvnDao {
         }
     }
 
+    @Override
+    public PigHouse getPigHouseInfoByERC721(String ERC721ID) {
+        try{
+            PigInfo pigInfo= BigchaindbUtil.getAllAssets(ERC721ID,PigInfo.class).get(0);
+            return BigchaindbUtil.getAllAssets(pigInfo.getPigstyId(),PigHouse.class).get(0);
+        }catch (Exception e){
+            return null;
+        }
+    }
+
     /**
      * 获得猪舍列表信息
      * @return

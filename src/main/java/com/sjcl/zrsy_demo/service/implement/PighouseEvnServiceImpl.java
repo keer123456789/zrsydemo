@@ -56,4 +56,9 @@ public class PighouseEvnServiceImpl implements IPighouseEvnService {
         }
         return idlist;
     }
+
+    @Override
+    public PigHouse getPigHouseInfoByERC721(String ERC721ID) {
+        return pighouseEvnDao.getPigHouseInfoByERC721(ERC721ID);
+    }
 }
