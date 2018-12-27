@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.couchbase.CouchbaseProperties;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,7 +37,7 @@ public class PighouseEnvController {
     }
 
     /**
-     *
+     *增加猪舍
      * @param json
      * @return
      */
@@ -43,8 +45,10 @@ public class PighouseEnvController {
     public Map addPighouse(@RequestBody String  json){
         JSONObject jsonObject= JSON.parseObject(json);
         JSONObject data=jsonObject.getJSONObject("data");
-        PigHouse pigInfo=JSON.toJavaObject(data,PigHouse.class);
-        if(pighouseEvnService.addPigHouse(pigInfo)) {
+        PigHouse pigHouse=JSON.toJavaObject(data,PigHouse.class);
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        pigHouse.setTime(df.format(new Date()));
+        if(pighouseEvnService.addPigHouse(pigHouse)) {
             Map<String, String> res = new HashMap<>();
             res.put("message", "success");
             return res;

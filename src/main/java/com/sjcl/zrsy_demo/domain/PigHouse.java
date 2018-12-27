@@ -1,14 +1,13 @@
 package com.sjcl.zrsy_demo.domain;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+
 
 public class PigHouse {
-
-
     private String pigstyId;
     private String column;
     private String ringNumber;
     private String person;
+    private String time;
 
 
     public String getPigstyId() {
@@ -44,5 +43,11 @@ public class PigHouse {
         this.person = person;
     }
 
+    public String getTime() {
+        return time;
+    }
 
+    public void setTime(String time) {
+        this.time = time;
+    }
 }

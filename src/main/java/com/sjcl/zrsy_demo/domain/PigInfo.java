@@ -13,6 +13,7 @@ public class PigInfo {
     private String pigstyId;
     private String ERC721ID;
 
+
     public PigInfo() {
     }
 

@@ -2,14 +2,16 @@ package com.sjcl.zrsy_demo.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import com.sjcl.zrsy_demo.domain.Sensor;
+import com.sjcl.zrsy_demo.service.ISensorService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.FileInputStream;
 @RestController
 public class SensorController {
+    @Autowired
+    ISensorService sensorService;
 
     @GetMapping("/getKey")
     public String getKey(){
@@ -29,6 +31,31 @@ public class SensorController {
        }
     }
 
+    /**
+     * 通过ERC721ID查询传感器的信息
+     * @param ERC721ID
+     * @return
+     */
+    @GetMapping("/getPigSensorByERC721/{ERC721ID}")
+    public Sensor getSensorInfo(@PathVariable String ERC721ID){
+        return sensorService.getSensor(ERC721ID);
+    }
+
+    /**
+     * 增加传感器的信息
+     * @param sensor
+     * @return
+     */
+    @PostMapping("/addPigSensor")
+    public boolean addPigSensor(@RequestBody Sensor sensor){
+        return sensorService.addSensor(sensor);
+    }
+
+    /**
+     *
+     * @param path
+     * @return
+     */
     private String getKeyPairString(String path){
         try {
             FileInputStream in = new FileInputStream(path);
