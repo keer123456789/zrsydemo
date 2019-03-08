@@ -105,7 +105,7 @@ public class PigInfoDao implements IPigInfoDao {
         else if(hour==12){
             beforeTime.set(Calendar.HOUR, beforeTime.get(Calendar.HOUR) - 12);        }
         else{
-            beforeTime.add(Calendar.MINUTE, -5);// 1分钟之前的时间
+            beforeTime.add(Calendar.MINUTE, -5);// 5分钟之前的时间
         }
         Date beforeD = beforeTime.getTime();
         Date date1=sdf.parse(date);

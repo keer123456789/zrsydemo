@@ -26,12 +26,13 @@ public class KeyPairHolder {
     }
 
     /**
-     * 将密钥对存贮在./keypair.txt文件中
-     * @param keyPair
+     * 生成新的秘钥， 将密钥对存贮在path文件中
      */
-    public static void setKeyPair(KeyPair keyPair){
+    public static void setKeyPair(String path){
+        KeyPair keyPair=KeyPairUtils.generateNewKeyPair();
         try{
-        FileOutputStream fos = new FileOutputStream("./keypair.txt");
+//        FileOutputStream fos = new FileOutputStream("./keypair.txt");
+        FileOutputStream fos = new FileOutputStream(path);
         fos.write(KeyPairUtils.encodePrivateKeyBase64(keyPair).getBytes());
         fos.close();
         }catch (Exception e){
@@ -56,4 +57,7 @@ public class KeyPairHolder {
         return (EdDSAPrivateKey) getKeyPair().getPrivate();
     }
 
+//    public static void main(String[] args) {
+//        KeyPairHolder.setKeyPair("./buy.txt");
+//    }
 }

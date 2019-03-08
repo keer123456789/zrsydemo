@@ -515,12 +515,12 @@ public class BigchaindbUtil {
     public static void main(String[] args) throws IOException, ClassNotFoundException, InstantiationException, IllegalAccessException, InvocationTargetException, IntrospectionException, ParseException {
 
 
-//        BigchainDbConfigBuilder
-//                .baseUrl("http://127.0.0.1:9984")
-//                .setup();
-//        PigInfo pigInfo= (PigInfo) BigchaindbUtil.getAllAssets("1234567890123",PigInfo.class).get(1);
-//        System.out.println(1);
-        // TODO Auto-generated method stub
+        BigchainDbConfigBuilder
+                .baseUrl("http://127.0.0.1:9984")
+                .setup();
+        PigInfo pigInfo= (PigInfo) BigchaindbUtil.getAllAssets("1234567890123",PigInfo.class).get(1);
+        System.out.println(1);
+
 
 
      System.out.println(PigInfoDao.getCurrentTime(24,"2018-12-18 23:00:00"));

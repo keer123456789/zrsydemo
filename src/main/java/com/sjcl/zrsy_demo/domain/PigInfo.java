@@ -12,9 +12,17 @@ public class PigInfo {
     private String remarks;
     private String pigstyId;
     private String ERC721ID;
-
+    private int status;
 
     public PigInfo() {
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public String getPigstyId() {
